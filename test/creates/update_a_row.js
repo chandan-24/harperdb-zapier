@@ -5,7 +5,7 @@ const zapier = require('zapier-platform-core');
 const App = require('../../index');
 const appTester = zapier.createAppTester(App);
 
-describe('Create - upadate_a_row', () => {
+describe('Create - update_a_row', () => {
   zapier.tools.env.inject();
 
   it('should create an object', async () => {
