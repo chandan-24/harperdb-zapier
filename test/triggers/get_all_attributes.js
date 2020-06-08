@@ -5,7 +5,7 @@ const zapier = require('zapier-platform-core');
 const App = require('../../index');
 const appTester = zapier.createAppTester(App);
 
-describe('Trigger - get_all_attibutes', () => {
+describe('Trigger - get_all_attributes', () => {
   zapier.tools.env.inject();
 
   it('should get an array', async () => {
@@ -24,7 +24,7 @@ describe('Trigger - get_all_attibutes', () => {
     };
 
     const results = await appTester(
-      App.triggers['get_all_attibutes'].operation.perform,
+      App.triggers['get_all_attributes'].operation.perform,
       bundle
     );
     results.should.be.an.Array();

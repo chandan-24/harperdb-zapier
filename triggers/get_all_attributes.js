@@ -15,8 +15,8 @@ const perform = (z, bundle) => {
     params: {},
     body: {
       operation: 'describe_table',
-      schema: bundle.authData.schema,
-      table: 'breeds',
+      schema: bundle.inputData.schema,
+      table: bundle.inputData.table,
     },
   };
 
@@ -26,10 +26,8 @@ const perform = (z, bundle) => {
     let id = 0;
     const attributes = [];
     results.attributes.forEach((ele) => {
-      if (!['__updatedtime__', '__createdtime__'].includes(ele.attribute)) {
-        ele.id = ++id;
-        attributes.push(ele);
-      }
+      ele.id = ++id;
+      attributes.push(ele);
     });
     return attributes;
   });
@@ -38,14 +36,14 @@ const perform = (z, bundle) => {
 module.exports = {
   operation: {
     perform: perform,
-    sample: { attribute: 'image', id: 1 },
-    outputFields: [{ key: 'attribute', label: 'attribute' }],
+    sample: { attribute: '__updatedtime__', id: 1 },
+    outputFields: [{ key: 'attribute', label: 'Attribute' }],
   },
-  key: 'get_all_attibutes',
-  noun: 'attributes',
+  key: 'get_all_attributes',
+  noun: 'Attributes',
   display: {
-    label: 'get all attributes',
-    description: 'fetch all attributes of the table',
+    label: 'Get all Attributes',
+    description: 'Get all attributes of the table from the schema',
     hidden: true,
     important: false,
   },
