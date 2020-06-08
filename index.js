@@ -1,9 +1,11 @@
 const authentication = require('./authentication');
-const getAllTablesTrigger = require('./triggers/get_all_tables.js');
-const getAllAttibutesTrigger = require('./triggers/get_all_attibutes.js');
-const getAllSchemaTrigger = require('./triggers/get_all_schema.js');
-const createARowCreate = require('./creates/create_a_row.js');
-const updateARowCreate = require('./creates/update_a_row');
+const getAllTablesTrigger = require('./triggers/get_all_tables');
+const getAllSchemaTrigger = require('./triggers/get_all_schema');
+const rowAddedTrigger = require('./triggers/row_added');
+const getAllAttributesTrigger = require('./triggers/get_all_attributes');
+const createARowCreate = require('./creates/create_a_row');
+const upadateARowCreate = require('./creates/update_a_row');
+const findRowSearch = require('./searches/find_a_row');
 
 module.exports = {
   version: require('./package.json').version,
@@ -11,11 +13,13 @@ module.exports = {
   authentication: authentication,
   creates: {
     [createARowCreate.key]: createARowCreate,
-    [updateARowCreate.key]: updateARowCreate,
+    [upadateARowCreate.key]: upadateARowCreate,
   },
   triggers: {
     [getAllTablesTrigger.key]: getAllTablesTrigger,
-    [getAllAttibutesTrigger.key]: getAllAttibutesTrigger,
     [getAllSchemaTrigger.key]: getAllSchemaTrigger,
+    [rowAddedTrigger.key]: rowAddedTrigger,
+    [getAllAttributesTrigger.key]: getAllAttributesTrigger,
   },
+  searches: { [findRowSearch.key]: findRowSearch },
 };
