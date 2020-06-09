@@ -6,6 +6,7 @@ const getAllAttributesTrigger = require('./triggers/get_all_attributes');
 const createARowCreate = require('./creates/create_a_row');
 const upadateARowCreate = require('./creates/update_a_row');
 const findRowSearch = require('./searches/find_a_row');
+const findRowViaCustomQuerySearch = require('./searches/find_row_via_custom_query');
 
 module.exports = {
   version: require('./package.json').version,
@@ -21,5 +22,8 @@ module.exports = {
     [rowAddedTrigger.key]: rowAddedTrigger,
     [getAllAttributesTrigger.key]: getAllAttributesTrigger,
   },
-  searches: { [findRowSearch.key]: findRowSearch },
+  searches: {
+    [findRowSearch.key]: findRowSearch,
+    [findRowViaCustomQuerySearch.key]: findRowViaCustomQuerySearch,
+  },
 };
