@@ -4,7 +4,7 @@ const perform = (z, bundle) => {
   const getRecords = () => {
     const data = {};
     Object.keys(bundle.inputData).forEach((ele) => {
-      if (!['schema', 'table'].includes(ele) && bundle.inputData[ele])
+      if (!['schema', 'table', 'lookup_attribute', 'lookup_value'].includes(ele) && bundle.inputData[ele])
         data[ele] = bundle.inputData[ele];
     });
     return [data];

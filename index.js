@@ -7,6 +7,7 @@ const createARowCreate = require('./creates/create_a_row');
 const upadateARowCreate = require('./creates/update_a_row');
 const findRowSearch = require('./searches/find_a_row');
 const findRowViaCustomQuerySearch = require('./searches/find_row_via_custom_query');
+const findOrCreateRowSearch = require('./searches/find_or_create_row');
 
 module.exports = {
   version: require('./package.json').version,
@@ -25,5 +26,18 @@ module.exports = {
   searches: {
     [findRowSearch.key]: findRowSearch,
     [findRowViaCustomQuerySearch.key]: findRowViaCustomQuerySearch,
+    [findOrCreateRowSearch.key]: findOrCreateRowSearch,
+  },
+  searchOrCreates: {
+    find_or_create_row: {
+      key: 'find_or_create_row',
+      display: {
+        label: 'Find or Create row',
+        description:
+          'Find a row or alternatively create a new one if not found.',
+      },
+      search: 'find_or_create_row',
+      create: 'create_a_row',
+    },
   },
 };
