@@ -32,7 +32,7 @@ const getAllTributes = (z, bundle) => {
       if (!['__updatedtime__', '__createdtime__'].includes(ele.attribute)) {
         ele.label = ele.attribute;
         ele.key = ele.attribute;
-        ele.type = 'string',
+        ele.type = 'string';
         attributes.push(ele);
       }
     });

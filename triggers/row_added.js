@@ -56,8 +56,9 @@ module.exports = {
   key: 'row_added',
   noun: 'row',
   display: {
-    label: 'row added',
-    description: 'New row added to the table',
+    label: 'New row added',
+    description:
+      'Triggered when a new row in added to the table. \'id\' should be is your hash_attribute.',
     hidden: false,
     important: true,
   },

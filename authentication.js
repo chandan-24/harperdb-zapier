@@ -1,4 +1,4 @@
-const testAuth = (z, bundle) => {
+const test = (z, bundle) => {
   const basicAuth =
     'Basic ' +
     Buffer.from(
@@ -23,16 +23,13 @@ const testAuth = (z, bundle) => {
     const results = {};
     results.active = response.json.active;
     results.username = response.json.username;
-
-    // You can do any parsing you need for results here before returning them
-
     return results;
   });
 };
 
 module.exports = {
   type: 'digest',
-  test: testAuth,
+  test,
   fields: [
     {
       computed: false,
@@ -40,6 +37,8 @@ module.exports = {
       required: true,
       label: 'Host',
       type: 'string',
+      helpText:
+        'The IP address or hostname (db.example.com) of where your database instance resides. Note, localhost and 127.0.0.1 are not valid! Make sure it is accessible from outside of your network.',
     },
     {
       computed: false,
@@ -47,6 +46,8 @@ module.exports = {
       required: true,
       label: 'Username',
       type: 'string',
+      helpText:
+        'We recommend creating a new database user with extremely limited access.\n',
     },
     {
       computed: false,

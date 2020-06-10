@@ -75,7 +75,8 @@ module.exports = {
   noun: 'row',
   display: {
     label: 'Update a row',
-    description: 'update a row in table',
+    description:
+      'Update an existing row in the selected table. You must pass the id(hash_attribute) of the row you need to update.',
     hidden: false,
     important: true,
   },

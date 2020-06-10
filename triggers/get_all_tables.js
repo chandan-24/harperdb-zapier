@@ -42,7 +42,7 @@ module.exports = {
   noun: 'tables',
   display: {
     label: 'get all tables',
-    description: 'fetch all tables from the schema',
+    description: 'Fetch all tables from the schema',
     hidden: true,
     important: false,
   },

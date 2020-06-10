@@ -29,8 +29,6 @@ const perform = (z, bundle) => {
       };
       results.push(schema);
     });
-    // You can do any parsing you need for results here before returning them
-
     return results;
   });
 };
@@ -45,7 +43,7 @@ module.exports = {
   noun: 'schema',
   display: {
     label: 'get all schema',
-    description: 'fetch all schema from the server',
+    description: 'Fetch all schema from the server',
     hidden: true,
     important: false,
   },

@@ -75,7 +75,8 @@ module.exports = {
   noun: 'row',
   display: {
     label: 'Create a row',
-    description: 'create a row in table',
+    description:
+      'Create a new row in a table of your choice. You must pass the id(hash_attribute) of the row you need to update.',
     hidden: false,
     important: true,
   },

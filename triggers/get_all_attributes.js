@@ -43,7 +43,7 @@ module.exports = {
   noun: 'Attributes',
   display: {
     label: 'Get all Attributes',
-    description: 'Get all attributes of the table from the schema',
+    description: 'Fetch all attributes of the table from the schema',
     hidden: true,
     important: false,
   },

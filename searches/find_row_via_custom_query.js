@@ -36,6 +36,7 @@ module.exports = {
         type: 'string',
         helpText:
           'You should include desired ordering and limiting (usually to 1 record) in the query',
+        default: 'SELECT * FROM schema.table ORDER BY id DESC LIMIT 1',
         required: true,
         list: false,
         altersDynamicFields: false,
