@@ -3,6 +3,7 @@ const getAllTablesTrigger = require('./triggers/get_all_tables');
 const getAllSchemaTrigger = require('./triggers/get_all_schema');
 const rowAddedTrigger = require('./triggers/row_added');
 const getAllAttributesTrigger = require('./triggers/get_all_attributes');
+const rowUpdatedTrigger = require('./triggers/row_updated');
 const createARowCreate = require('./creates/create_a_row');
 const upadateARowCreate = require('./creates/update_a_row');
 const findRowSearch = require('./searches/find_a_row');
@@ -22,6 +23,7 @@ module.exports = {
     [getAllSchemaTrigger.key]: getAllSchemaTrigger,
     [rowAddedTrigger.key]: rowAddedTrigger,
     [getAllAttributesTrigger.key]: getAllAttributesTrigger,
+    [rowUpdatedTrigger.key]: rowUpdatedTrigger,
   },
   searches: {
     [findRowSearch.key]: findRowSearch,
