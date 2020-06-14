@@ -6,10 +6,12 @@ const perform = (z, bundle) => {
       'utf8'
     ).toString('base64');
 
-  const query = `select * from ` + `${bundle.inputData.schema}.${bundle.inputData.table}` +` order by __createdtime__ desc`;
+  const hostUrl = 'https://'+bundle.authData.host_address;
+
+  const query = `select * from ` + `${bundle.inputData.schema}.${bundle.inputData.table}` +` order by __updatedtime__ desc`;
 
   const options = {
-    url: bundle.authData.host_address,
+    url: hostUrl,
     method: 'POST',
     headers: {
       Authorization: basicAuth,
