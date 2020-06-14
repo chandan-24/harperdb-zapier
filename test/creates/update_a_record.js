@@ -5,10 +5,10 @@ const zapier = require('zapier-platform-core');
 const App = require('../../index');
 const appTester = zapier.createAppTester(App);
 
-describe('Search - find_or_create_row', () => {
+describe('Create - update_a_record', () => {
   zapier.tools.env.inject();
 
-  it('should get an array', async () => {
+  it('should create an object', async () => {
     const bundle = {
       authData: {
         host_address: process.env.HOST_ADDRESS,
@@ -23,12 +23,11 @@ describe('Search - find_or_create_row', () => {
       inputData: {},
     };
 
-    const results = await appTester(
-      App.searches['find_or_create_row'].operation.perform,
+    const operation = App.creates['update_a_record'].operation;
+    const result = await appTester(
+      operation.perform,
       bundle
     );
-    results.should.be.an.Array();
-    results.length.should.be.aboveOrEqual(1);
-    results[0].should.have.property('id');
+    result.should.not.be.an.Array();
   });
 });

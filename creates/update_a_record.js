@@ -1,5 +1,4 @@
 const getAllAttributes = require('../helper/getAllAttributes');
-const createRow = require('./create_a_row');
 
 const perform = (z, bundle) => {
   const getRecords = () => {
@@ -11,14 +10,14 @@ const perform = (z, bundle) => {
     return [data];
   };
 
-  const hostUrl = 'https://'+bundle.authData.host_address;
-
   const basicAuth =
     'Basic ' +
     Buffer.from(
       bundle.authData.username + ':' + bundle.authData.password,
       'utf8'
     ).toString('base64');
+
+  const hostUrl = 'https://'+bundle.authData.host_address;
 
   const options = {
     url: hostUrl,
@@ -38,9 +37,6 @@ const perform = (z, bundle) => {
   return z.request(options).then((response) => {
     response.throwForStatus();
     const results = response.json;
-    if (results.skipped_hashes.length) {
-      return createRow.operation.perform(z,bundle);
-    }
     return results;
   });
 };
@@ -72,17 +68,17 @@ module.exports = {
     ],
     sample: {
       message: 'updated 1 of 1 records',
-      skipped_hashes: ['some_id'],
+      skipped_hashes: [],
       update_hashes: ['06a885b1-2cfe-46af-8493-4875edcafc88'],
     },
     outputFields: [{ key: 'message', label: 'message', type: 'text' }],
   },
-  key: 'update_or_create_a_row',
-  noun: 'row',
+  key: 'update_a_record',
+  noun: 'Record',
   display: {
-    label: 'Update or create a row',
+    label: 'Update a Record',
     description:
-      'Update an existing row or alternatively create one if it does not exist in the selected table. You must pass the id(hash_attribute) of the row you need to update.',
+      'Update an existing record in the selected table. You must pass the id(hash_attribute) of the record you need to update.',
     hidden: false,
     important: true,
   },

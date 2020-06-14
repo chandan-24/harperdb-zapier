@@ -5,7 +5,7 @@ const zapier = require('zapier-platform-core');
 const App = require('../../index');
 const appTester = zapier.createAppTester(App);
 
-describe('Search - find_a_row', () => {
+describe('Search - find_or_create_record', () => {
   zapier.tools.env.inject();
 
   it('should get an array', async () => {
@@ -24,7 +24,7 @@ describe('Search - find_a_row', () => {
     };
 
     const results = await appTester(
-      App.searches['find_a_row'].operation.perform,
+      App.searches['find_or_create_record'].operation.perform,
       bundle
     );
     results.should.be.an.Array();

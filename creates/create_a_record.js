@@ -4,7 +4,7 @@ const perform = (z, bundle) => {
   const getRecords = () => {
     const data = {};
     Object.keys(bundle.inputData).forEach((ele) => {
-      if (!['schema', 'table'].includes(ele) && bundle.inputData[ele])
+      if (!['schema', 'table', 'lookup_attribute', 'lookup_value'].includes(ele) && bundle.inputData[ele])
         data[ele] = bundle.inputData[ele];
     });
     return [data];
@@ -16,7 +16,6 @@ const perform = (z, bundle) => {
       bundle.authData.username + ':' + bundle.authData.password,
       'utf8'
     ).toString('base64');
-
   const hostUrl = 'https://'+bundle.authData.host_address;
 
   const options = {
@@ -27,7 +26,7 @@ const perform = (z, bundle) => {
     },
     params: {},
     body: {
-      operation: 'update',
+      operation: 'insert',
       schema: bundle.inputData.schema,
       table: bundle.inputData.table,
       records: getRecords(),
@@ -67,18 +66,18 @@ module.exports = {
       getAllAttributes,
     ],
     sample: {
-      message: 'updated 1 of 1 records',
+      message: 'inserted 1 of 1 records',
       skipped_hashes: [],
-      update_hashes: ['06a885b1-2cfe-46af-8493-4875edcafc88'],
+      inserted_hashes: ['34986be2-0f95-4617-bb08-8db001fa9263'],
     },
     outputFields: [{ key: 'message', label: 'message', type: 'text' }],
   },
-  key: 'update_a_row',
-  noun: 'row',
+  key: 'create_a_record',
+  noun: 'Record',
   display: {
-    label: 'Update a row',
+    label: 'Create a Record',
     description:
-      'Update an existing row in the selected table. You must pass the id(hash_attribute) of the row you need to update.',
+      'Create a new record in a table of your choice. You must pass the id(hash_attribute) of the record you need to update.',
     hidden: false,
     important: true,
   },

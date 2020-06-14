@@ -5,7 +5,7 @@ const zapier = require('zapier-platform-core');
 const App = require('../../index');
 const appTester = zapier.createAppTester(App);
 
-describe('Create - create_a_row', () => {
+describe('Create - update_or_create_a_record', () => {
   zapier.tools.env.inject();
 
   it('should create an object', async () => {
@@ -22,10 +22,12 @@ describe('Create - create_a_row', () => {
 
       inputData: {},
     };
+
+    const operation = App.creates['update_or_create_a_record'].operation;
     const result = await appTester(
-      App.creates['create_a_row'].operation.perform,
+      operation.perform,
       bundle
     );
-    result.should.not.be.an.Object();
+    result.should.not.be.an.Array();
   });
 });

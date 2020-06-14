@@ -5,7 +5,7 @@ const zapier = require('zapier-platform-core');
 const App = require('../../index');
 const appTester = zapier.createAppTester(App);
 
-describe('Search - find_row_via_custom_query', () => {
+describe('Search - find_record_via_custom_query', () => {
   zapier.tools.env.inject();
 
   it('should get an array', async () => {
@@ -24,7 +24,7 @@ describe('Search - find_row_via_custom_query', () => {
     };
 
     const results = await appTester(
-      App.searches['find_row_via_custom_query'].operation.perform,
+      App.searches['find_record_via_custom_query'].operation.perform,
       bundle
     );
     results.should.be.an.Array();

@@ -1,7 +1,7 @@
 {
-  "name": "hdb",
-  "version": "1.0.1",
-  "description": "this is a test hdb integration",
+  "name": "harperdb",
+  "version": "1.0.0",
+  "description": "HarperDB's Zapier integration",
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive -t 10000"

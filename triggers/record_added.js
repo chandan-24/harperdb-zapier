@@ -55,12 +55,12 @@ module.exports = {
     ],
     canPaginate: false,
   },
-  key: 'row_added',
-  noun: 'row',
+  key: 'record_added',
+  noun: 'Record',
   display: {
-    label: 'New row added',
+    label: 'New Record Added',
     description:
-      'Triggered when a new row in added to the table. \'id\' should be your hash_attribute.',
+      'Trigger when a new record in added to the table. \'id\' should be your hash_attribute.',
     hidden: false,
     important: true,
   },

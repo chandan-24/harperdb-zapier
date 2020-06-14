@@ -8,7 +8,11 @@ const perform = (z, bundle) => {
 
   const hostUrl = 'https://'+bundle.authData.host_address;
 
-  const query = `select * from ` + `${bundle.inputData.schema}.${bundle.inputData.table}` +` order by __updatedtime__ desc`;
+  const query =
+    `select * from ` +
+    `${bundle.inputData.schema}.${bundle.inputData.table}` +
+    ` where ${bundle.inputData.lookup_attribute} = '${bundle.inputData.lookup_value}'` +
+    ` order by __createdtime__ desc limit 1`;
 
   const options = {
     url: hostUrl,
@@ -36,30 +40,46 @@ module.exports = {
     inputFields: [
       {
         key: 'schema',
-        type: 'string',
         label: 'Schema',
+        type: 'string',
         dynamic: 'get_all_schema.name.name',
-        required: false,
+        required: true,
         list: false,
         altersDynamicFields: false,
       },
       {
         key: 'table',
-        type: 'string',
         label: 'Table',
+        type: 'string',
         dynamic: 'get_all_tables.name.name',
-        required: false,
+        required: true,
+        list: false,
+        altersDynamicFields: false,
+      },
+      {
+        key: 'lookup_attribute',
+        label: 'Lookup Attribute',
+        type: 'string',
+        dynamic: 'get_all_attributes.attribute.attribute',
+        required: true,
+        list: false,
+        altersDynamicFields: false,
+      },
+      {
+        key: 'lookup_value',
+        label: 'Lookup Value',
+        type: 'string',
+        required: true,
         list: false,
         altersDynamicFields: false,
       },
     ],
-    canPaginate: false,
   },
-  key: 'row_updated',
-  noun: 'row',
+  key: 'find_or_create_record',
+  noun: 'Record',
   display: {
-    label: 'Row Updated',
-    description: 'Triggered when a row is modified.',
+    label: 'Find Or Create A Record',
+    description: 'Find a record or alternatively create a new one if not found.',
     hidden: false,
     important: true,
   },

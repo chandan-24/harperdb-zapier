@@ -14,6 +14,8 @@ const perform = (z, bundle) => {
     ` where ${bundle.inputData.lookup_attribute} = '${bundle.inputData.lookup_value}'` +
     ` order by __createdtime__ desc limit 1`;
 
+  console.log(query);
+
   const options = {
     url: hostUrl,
     method: 'POST',
@@ -45,7 +47,7 @@ module.exports = {
         dynamic: 'get_all_schema.name.name',
         required: true,
         list: false,
-        altersDynamicFields: false,
+        altersDynamicFields: true,
       },
       {
         key: 'table',
@@ -54,12 +56,14 @@ module.exports = {
         dynamic: 'get_all_tables.name.name',
         required: true,
         list: false,
-        altersDynamicFields: false,
+        altersDynamicFields: true,
       },
       {
         key: 'lookup_attribute',
         label: 'Lookup Attribute',
         type: 'string',
+        helpText:
+          'Column you want to search by with the value below. We will grab the latest matching record and give you all of its values',
         dynamic: 'get_all_attributes.attribute.attribute',
         required: true,
         list: false,
@@ -73,13 +77,13 @@ module.exports = {
         list: false,
         altersDynamicFields: false,
       },
-    ],
+    ]
   },
-  key: 'find_or_create_row',
-  noun: 'row',
+  key: 'find_a_record',
+  noun: 'Record',
   display: {
-    label: 'Find or Create a row',
-    description: 'Find a row or alternatively create a new one if not found.',
+    label: 'Find a Record',
+    description: 'Finds a record in the table via a lookup attribute',
     hidden: false,
     important: true,
   },
