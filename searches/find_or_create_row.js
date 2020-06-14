@@ -6,16 +6,16 @@ const perform = (z, bundle) => {
       'utf8'
     ).toString('base64');
 
+  const hostUrl = 'https://'+bundle.authData.host_address;
+
   const query =
     `select * from ` +
     `${bundle.inputData.schema}.${bundle.inputData.table}` +
     ` where ${bundle.inputData.lookup_attribute} = '${bundle.inputData.lookup_value}'` +
     ` order by __createdtime__ desc limit 1`;
 
-  console.log(query);
-
   const options = {
-    url: bundle.authData.host_address,
+    url: hostUrl,
     method: 'POST',
     headers: {
       Authorization: basicAuth,

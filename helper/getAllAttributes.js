@@ -9,8 +9,10 @@ const getAllTributes = (z, bundle) => {
       'utf8'
     ).toString('base64');
 
+  const hostUrl = 'https://'+bundle.authData.host_address;
+
   const options = {
-    url: bundle.authData.host_address,
+    url: hostUrl,
     method: 'POST',
     headers: {
       Authorization: basicAuth,

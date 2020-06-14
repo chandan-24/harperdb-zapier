@@ -6,6 +6,8 @@ const perform = (z, bundle) => {
       'utf8'
     ).toString('base64');
 
+  const hostUrl = 'https://'+bundle.authData.host_address;
+
   const query =
     `select * from ` +
     `${bundle.inputData.schema}.${bundle.inputData.table}` +
@@ -15,7 +17,7 @@ const perform = (z, bundle) => {
   console.log(query);
 
   const options = {
-    url: bundle.authData.host_address,
+    url: hostUrl,
     method: 'POST',
     headers: {
       Authorization: basicAuth,

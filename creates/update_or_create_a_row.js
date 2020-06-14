@@ -11,6 +11,8 @@ const perform = (z, bundle) => {
     return [data];
   };
 
+  const hostUrl = 'https://'+bundle.authData.host_address;
+
   const basicAuth =
     'Basic ' +
     Buffer.from(
@@ -19,7 +21,7 @@ const perform = (z, bundle) => {
     ).toString('base64');
 
   const options = {
-    url: bundle.authData.host_address,
+    url: hostUrl,
     method: 'POST',
     headers: {
       Authorization: basicAuth,
