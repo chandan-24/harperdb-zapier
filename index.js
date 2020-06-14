@@ -6,6 +6,7 @@ const getAllAttributesTrigger = require('./triggers/get_all_attributes');
 const rowUpdatedTrigger = require('./triggers/row_updated');
 const createARowCreate = require('./creates/create_a_row');
 const upadateARowCreate = require('./creates/update_a_row');
+const updateOrCreateARowCreate = require('./creates/update_or_create_a_row');
 const findRowSearch = require('./searches/find_a_row');
 const findRowViaCustomQuerySearch = require('./searches/find_row_via_custom_query');
 const findOrCreateRowSearch = require('./searches/find_or_create_row');
@@ -17,6 +18,7 @@ module.exports = {
   creates: {
     [createARowCreate.key]: createARowCreate,
     [upadateARowCreate.key]: upadateARowCreate,
+    [updateOrCreateARowCreate.key]: updateOrCreateARowCreate,
   },
   triggers: {
     [getAllTablesTrigger.key]: getAllTablesTrigger,
